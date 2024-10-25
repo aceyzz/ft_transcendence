@@ -204,4 +204,4 @@ If you'd like to contribute to this project, feel free to fork the repository, m
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE). See the `LICENSE` file for more details.
+This project is licensed under the [MIT License](LICENCE). See the `LICENSE` file for more details.
