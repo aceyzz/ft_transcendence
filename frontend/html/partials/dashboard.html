@@ -1,0 +1,68 @@
+<div id="dashboard" class="container text-center">
+	<h1>Dashboard</h1>
+
+	<div id="user-info" class="user-info d-flex justify-content-center">
+		<div class="text-center">
+			<img id="user-avatar" src="/static/assets/user_default.png" alt="Avatar" class="user-avatar"
+				style="width:100px;height:100px;border-radius:50%;">
+			<h2 id="user-fullname"></h2>
+			<p id="user-username"></p>
+		</div>
+	</div>
+
+	<div class="friends-section my-2">
+		<h3>Recent Friends</h3>
+		<div id="friends-list" class="friends-list d-flex justify-content-center"></div>
+	</div>
+
+	<div class="recent-activity my-2">
+		<h3>Recent Matches</h3>
+		<div id="recent-matches" class="recent-matches d-flex justify-content-center">
+			<!-- jusqua 3 matchs affichés dynamiquement -->
+		</div>
+	</div>
+
+	<div class="btn-group-custom">
+		<a data-route href="/game" id="play" class="btn btn-success custom-btn" title="Play a game">Play</a>
+		<a href="/friend-list" data-route id="social" class="btn btn-primary custom-btn"
+			title="View friend list">Social</a>
+		<a data-route href="/stats" id="stats" class="btn btn-warning custom-btn" title="View your stats">Stats</a>
+	</div>
+
+	<div class="action-buttons">
+		<button id="logout" class="btn btn-danger custom-btn" title="Logout from your account">
+			<img src="/static/assets/logout.png" alt="logout" class="icon">
+			Logout
+		</button>
+	</div>
+
+	<template id="friend-template">
+		<div class="friend-card text-center mx-2 match-item">
+			<div class="match-box" style="position: relative;">
+				<div data-user-profile-btn class="friend-avatar-container connection-indicator">
+					<img data-friend-img src="/static/assets/user_default.png" class="friend-avatar-custom">
+					<span data-friend-username class="friend-username-badge"></span>
+				</div>
+				<div class="user-action">
+					<button data-chat-btn class="btn" id="chat-w-friend-btn" title="Chat with friend">
+						<img src="/static/assets/chat-1.png" alt="Chat" style="width:24px; height:24px;">
+					</button>
+					<button data-battle-btn class="btn" id="battle-w-friend-btn" title="Battle with friend">
+						<img src="/static/assets/battle.png" alt="Battle" style="width:24px; height:24px;">
+					</button>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template id="match-template">
+		<div class="text-center mx-2 match-item">
+			<div class="match-box">
+				<img data-result-img src="" alt="" class="match-avatar">
+				<p data-opponent></p>
+				<p data-timestamp class="timestamp"></p>
+				<p><span data-score1></span> - <span data-score2></span></p>
+			</div>
+		</div>
+	</template>
+</div>

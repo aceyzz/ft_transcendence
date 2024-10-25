@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat de tournoi</title>
+</head>
+<body>
+    <h1>Tournoi : {{ room_name }}</h1>
+
+    <div id="chat-log"></div>
+    
+    <input id="chat-message-input" type="text" size="100" placeholder="Tapez votre message ici...">
+    <button id="chat-message-send">Envoyer</button>
+
+    <script>
+        const roomName = "{{ room_name }}";
+        const username = "{{ username }}";  
+
+        const chatSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/tournament/' + roomName + '/'
+        );
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const chatLog = document.getElementById('chat-log');
+            
+            const newMessage = document.createElement('p');
+            newMessage.innerHTML = `<strong>${data.username}:</strong> ${data.message}`;
+            chatLog.appendChild(newMessage);
+        };
+
+        function sendMessage() {
+            const messageInput = document.getElementById('chat-message-input');
+            const message = messageInput.value;
+
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'username': username
+            }));
+
+            messageInput.value = '';
+        }
+
+        document.getElementById('chat-message-send').onclick = function() {
+            sendMessage();
+        };
+
+        document.getElementById('chat-message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') { 
+                e.preventDefault();  
+                sendMessage();  
+            }
+        });
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div id="pong-game" class="pong-container">
+	<div id="score-container" class="score-display">
+		<span id="player1-score">0</span> - <span id="player2-score">0</span>
+	</div>
+
+	<a data-route href="/game" id="back-to-menu" class="close-button" title="Back to Menu">
+		<img src="/static/assets/close.png" alt="Close" style="height: 30px; width: 30px;">
+	</a>
+
+	<div id="game-box">
+		<canvas id="pong-canvas"></canvas>
+	</div>
+
+	<div id="game-end-overlay" class="game-end-overlay">
+		<div class="game-end-content">
+			<h2 id="game-end-message" class="game-over-title"></h2>
+			<div class="game-score" id="game-score"></div>
+			<div class="game-winner" id="game-winner"></div>
+			<a data-route href="/game" id="back-to-menu" class="btn btn-secondary custom-btn" title="Back to Menu">Back to Menu</a>
+		</div>
+	</div>
+</div>
+<div id="flash-overlay"></div>

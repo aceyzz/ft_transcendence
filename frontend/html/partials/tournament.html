@@ -1,0 +1,126 @@
+<a data-route href="/game" id="back-to-menu" class="game-close-btn back-to-menu" title="Back to Menu"><img
+		src="/static/assets/close.png" alt="Close" style="height: 50px; width: 50px;"></a>
+<div id="tournament-container" class="tournament-container">
+
+	<div id="add-players" class="tournament__add-players hidden add-players">
+		<h2>Add participants</h2>
+		<form data-player-name-form>
+			<input id="player-name" name="player-name" type="text" class="player-name">
+			<button type="submit" class="hidden">Add</button>
+		</form>
+		<ul data-player-list class="tournament__player-list player-list"></ul>
+		<button data-start-game-btn type="button" class="tournament__start-game-btn">Create tournament</button>
+	</div>
+
+	<div id="match-list" class="tournament__match-list hidden match-list">
+		<h2>TOURNAMENT</h2>
+		<div data-list></div>
+		<div>
+			<button data-action-btn class="btn tournament_start-next-round-btn btn-success">
+				<img src="/static/assets/battle-2.png" alt="Next round">Start next round
+			</button>
+		</div>
+	</div>
+
+	<div data-game-container id="game-container" class="game-container hidden">
+
+		<!-- Game cards -->
+		<div data-game-cards class="game-cards-container">
+			<div data-player-card class="player-card">
+				<div class="player-card-avatar">
+					<img data-avatar src="/static/assets/user_default.png" alt="Player Avatar"
+						class="player-card-avatar-img">
+				</div>
+				<div class="player-card-info">
+					<div data-username class="player-card-username">Username</div>
+					<div data-score class="player-card-score">0</div>
+				</div>
+			</div>
+			<div data-player-card class="player-card">
+				<div class="player-card-avatar">
+					<img data-avatar src="/static/assets/user_default.png" alt="Player Avatar"
+						class="player-card-avatar-img">
+				</div>
+				<div class="player-card-info">
+					<div data-username class="player-card-username">Username</div>
+					<div data-score class="player-card-score">0</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Game canvas -->
+		<canvas id="game-canvas" class="game-canvas"></canvas>
+
+		<!-- Game controls (mobile) -->
+		<div data-mobile-controls class="mobile-only mobile-controls">
+			<div class="touch-controls touch-controls-left">
+				<button data-up-left class="touch-btn move-up-left">Up</button>
+				<button data-down-left class="touch-btn move-down-left">Down</button>
+			</div>
+			<div class="touch-controls touch-controls-right">
+				<button data-up-right class="touch-btn move-up-right">Up</button>
+				<button data-down-right class="touch-btn move-down-right">Down</button>
+			</div>
+		</div>
+
+		<div class="game-result-popup hidden">
+			<div class="game-result-popup-overlay"></div>
+			<div class="game-result-popup-content">
+				<h2>Game finished</h2>
+				<div class="game-result-summary">
+					<div class="game-result-popup-player1">
+						<img class="game-result-popup-player1-avatar"></img>
+						<div class="game-result-popup-player1-info">
+							<div class="game-result-popup-player1-username"></div>
+							<div class="game-result-popup-player1-score"></div>	
+						</div>
+					</div>
+					<div class="game-result-popup-player2">
+						<img class="game-result-popup-player2-avatar"></img>
+						<div class="game-result-popup-player2-info">
+							<div class="game-result-popup-player2-username"></div>
+							<div class="game-result-popup-player2-score"></div>
+						</div>
+					</div>
+				</div>
+				<div class="game-result-popup-actions">
+					<button id="game-result-action">OK</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="tournament-result" class="tournament-result hidden">
+		<div class="game-result-popup-content">
+			<div data-text class="game-result-popup-player2-username"></div>
+			<div class="game-result-popup-actions">
+				<button data-action-btn id="game-result-action">OK</button>
+			</div>
+		</div>
+	</div>
+
+	<template id="tournament-player-template">
+		<li>
+			<span data-player-name></span>
+			<button data-remove-btn>x</button>
+		</li>
+	</template>
+
+	<template id="tournament-match-category-template">
+		<h3 class="tournament__match-category tournament-match-category"></h3>
+	</template>
+
+	<template id="tournament-match-template">
+		<div class="tournament__match tournament-match">
+			<div class="tournament-match-score">
+				<span data-player1></span>
+				<span data-score-player1 class="score-player-left"></span>
+			</div>
+			<div class="tournament-match-score">
+				<span data-score-player2 class="score-player-right"></span>
+				<span data-player2></span>
+			</div>
+		</div>
+	</template>
+</div>

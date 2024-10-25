@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="csrftoken" content="{{ csrf_token }}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/pong.css">
+	<title>ft_transcendence</title>
+</head>
+
+<body class="light-mode logged-out">
+	<div id="overlay" class="overlay hidden">
+		<!-- overlay pour popups -->
+	</div>
+
+	<div id="fixed-button-group" class="fixed-button-group">
+		<button id="chat-button" class="logged-out-hide" title="Open Chat">
+			<img src="/static/assets/chat.png" alt="Chat">
+		</button>
+		<button id="notification-button" class="logged-out-hide" title="Open Notifications">
+			<img src="/static/assets/bell.png" alt="Notifications">
+		</button>
+		<button id="color-mode" title="Toggle Light/Dark Mode">
+			<img src="" alt="Color Mode" id="color-mode-icon">
+		</button>
+		<a data-route href="/user" id="profile-button" class="logged-out-hide" title="Edit Profile">
+			<img src="" img="/static/assets/user_default.png" alt="Edit Profile" id="profile-btn-icon"
+				style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; object-position: center;">
+		</a>
+		<button id="search-button" class="logged-out-hide" title="Search for an user">
+			<img src="/static/assets/search.png" alt="Search" id="search-icon">
+		</button>
+	</div>
+
+	<div id="chat-popup-container" class="chat-popup hidden">
+		<div class="chat-popup" id="chat-popup">
+			<div class="chat-container" id="chat-container">
+				<div class="chat-list" id="user-list-container">
+					<input type="text" class="chat-search" id="user-search" placeholder="Search a user...">
+					<div id="user-list" class="conversation-list"></div>
+				</div>
+				<div class="chat-window" id="chat-window">
+					<div class="chat-messages" id="message-list"></div>
+					<form class="chat-input-container hidden" id="chat-message-form">
+						<input type="hidden" name="to_user">
+						<input type="text" class="chat-message-input" id="chat-message-input" name="text"
+							placeholder="Type your message...">
+						<button type="submit" class="chat-send-button">
+							<img src="/static/assets/send.png" alt="Send" class="send-icon">
+						</button>
+						<button data-invite-battle-btn class="chat-send-button" id="invite-battle-chat-button">
+							<img src="/static/assets/battle-2.png" alt="Battle" class="battle-icon">
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="notifications-popup-container" class="notifications-popup-container hidden">
+		<div class="notifications-content" id="notifications-content"></div>
+	</div>
+
+	<div id="search-popup-container" class="search-popup-container hidden">
+		<div class="search-popup" id="search-popup">
+			<div class="search-container" id="search-container">
+				<input type="text" class="search-input" id="search-input" placeholder="Search an user...">
+				<div class="search-list" id="search-list"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="temp-alert-container" class="temp-alert-container hidden"></div>
+
+	<div id="notification-display-container" class="notification-display-container hidden">
+		<div class="notification-display-content">
+			<div>
+				<div data-message></div>
+				<div>
+					<button data-accept-btn class="hidden" title="Accept request">Accept</button>
+					<button data-decline-btn class="hidden" title="Decline request">Decline</button>
+					<button data-chat-btn class="hidden" title="Chat now">Chat</button>
+					<button data-profile-btn class="hidden" title="Check user profile">Profile</button>
+					<button data-block-btn class="hidden" title="Block user">Block</button>
+					<button data-invite-btn class="hidden" title="Invite to play">Invite</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<!-- contenu dynamique avec partials -->
+	</div>
+
+	<template id="notification-template">
+		<div data-notification class="notification-item">
+			<div class="notification-header">
+				<span data-notification-timestamp class="notification-timestamp">${timeString}</span>
+				<button data-notification-remove-btn class="notification-close" title="Close notification">×</button>
+			</div>
+			<div class="notification-body">
+				<p data-notification-message>${message}</p>
+			</div>
+		</div>
+	</template>
+
+	<template id="conversation-template">
+		<div class="conversation-item" style="position: relative;" data-user-id="">
+			<img data-avatar src="" alt="" class="user-avatar">
+			<div data-username class="user-username"></div>
+			<span data-status class="is-connected"></span>
+		</div>
+	</template>
+
+	<template id="chat-msg-template">
+		<div class="my-message"> <!-- Class can be friend-message -->
+			<div data-sender class="message-sender"></div>
+			<div data-content class="message-content"></div>
+			<div data-timestamp class="message-timestamp"></div>
+		</div>
+	</template>
+
+	<template id="search-item-template">
+		<div class="search-item">
+			<div class="user-avatar-container">
+				<img data-avatar src="/static/assets/user_default.png" alt="Avatar" class="user-avatar">
+			</div>
+			<div class="user-info">
+				<span data-username class="user-username"></span>
+			</div>
+			<div data-button-container class="user-action">
+				<button data-add-friend-btn id="add-friend" class="btn action-button add-friend-btn hidden"
+					title="Add friend">
+					<img src="/static/assets/add-friend.png" alt="Add friend" style="width:24px; height:24px;">
+				</button>
+				<button data-remove-friend-btn id="remove-friend" class="btn action-button remove-friend-btn hidden"
+					title="Remove friend">
+					<img src="/static/assets/remove.png" alt="Remove friend" style="width:24px; height:24px;">
+				</button>
+				<button data-block-user-btn id="block-user" class="btn action-button block-user-btn hidden"
+					title="Block user">
+					<img src="/static/assets/cancel-2.png" alt="Block user" style="width:24px; height:24px;">
+				</button>
+				<button data-unblock-user-btn id="unblock-user" class="btn action-button hidden" title="Block user">
+					<img src="/static/assets/unlock.png" alt="Unlock user" style="width:24px; height:24px;">
+				</button>
+				<button data-invite-play-btn id="invite-play" class="btn action-button invite-play-btn hidden"
+					title="Invite to play">
+					<img src="/static/assets/battle-1.png" alt="Invite to play" style="width:24px; height:24px;">
+				</button>
+				<button data-chat-btn id="chat-friend" class="btn action-button chat-w-friend-btn hidden"
+					title="Chat with friend">
+					<img src="/static/assets/chat-1.png" alt="Chat with friend" style="width:24px; height:24px;">
+				</button>
+				<button data-accept-friend-btn id="accept-friend" class="btn action-button accept-friend-btn hidden"
+					title="Accept friend request">
+					<img src="/static/assets/ok.png" alt="Accept friend request" style="width:24px; height:24px;">
+				</button>
+				<button data-decline-friend-btn id="decline-friend" class="btn action-button decline-friend-btn hidden"
+					title="Decline friend request">
+					<img src="/static/assets/cancel.png" alt="Decline friend request" style="width:24px; height:24px;">
+				</button>
+				<button data-cancel-friend-request-btn id="cancel-friend"
+					class="btn action-button cancel-friend-btn hidden" title="Cancel friend request">
+					<img src="/static/assets/cancel.png" alt="Cancel friend request" style="width:24px; height:24px;">
+				</button>
+			</div>
+		</div>
+	</template>
+
+	<template class="temp-alert-item">
+		<div class="temp-alert-content">
+			<p data-temp-alert-message class="temp-alert-message"></p>
+		</div>
+	</template>
+
+	{{ user_json|json_script:'user' }}
+	<script type="module" src="/static/js/app.js"></script>
+</body>
+
+</html>

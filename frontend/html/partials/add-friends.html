@@ -1,0 +1,53 @@
+<div id="add-friends" class="container text-center">
+	<table class="slider-group">
+		<tr>
+			<td><a id="add-friend-btn" class="sliders-btn btn active" title="Add friends page">INVITATIONS</a></td>
+			<td><a href="/friend-list" data-route id="list-friends-btn" class="sliders-btn btn"
+					title="View friend list">FRIEND LIST</a></td>
+			<td><a href="/blocked" data-route id="blocked-users-btn" class="sliders-btn btn"
+					title="View blocked users">BLOCKED</a></td>
+		</tr>
+	</table>
+
+	<div id="pending-list-received-container" class="users-list-container">
+		<h3>Friend Requests Received</h3>
+		<div id="pending-requests-received" class="pending-requests-list"></div>
+	</div>
+
+	<div id="pending-list-sent-container" class="users-list-container">
+		<h3>Friend Requests Sent</h3>
+		<div id="pending-requests-sent" class="pending-requests-list"></div>
+	</div>
+
+	<div class="action-buttons">
+		<a data-route href="/dashboard" class="btn btn-secondary custom-btn" id="back-to-dashboard"
+			title="Back to dashboard">Back</a>
+	</div>
+
+	<template id="friend-request-received-template">
+		<div class="friend-item">
+			<img data-avatar src="/static/assets/user_default.png" alt="" class="user-avatar">
+			<div data-username class="user-username"></div>
+			<div class="user-action">
+				<button data-accept-btn class="btn confirm-btn" title="Confirm friend request">
+					<img src="/static/assets/ok.png" alt="Accept" style="width:24px; height:24px;">
+				</button>
+				<button data-decline-btn class="btn decline-btn" title="Decline friend request">
+					<img src="/static/assets/cancel.png" alt="Decline" style="width:24px; height:24px;">
+				</button>
+			</div>
+		</div>
+	</template>
+
+	<template id="friend-request-sent-template">
+		<div class="friend-item">
+			<img data-avatar src="/static/assets/user_default.png" alt="" class="user-avatar">
+			<div data-username class="user-username"></div>
+			<div class="user-action">
+				<button data-cancel-btn class="btn cancel-btn" title="Cancel friend request">
+					<img src="/static/assets/cancel.png" alt="Cancel" style="width:24px; height:24px;">
+				</button>
+			</div>
+		</div>
+	</template>
+</div>

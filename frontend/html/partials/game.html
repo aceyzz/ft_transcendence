@@ -1,0 +1,31 @@
+<div id="game-screen" class="container text-center">
+	<h1 class="my-4">Choose Your Game Mode</h1>
+
+	<!-- single-match/tournament -->
+	<div class="btn-group-game">
+		<button id="single-match-btn" class="gamemode-btn" title="Create or join a single match" data-game-type="single-match">
+			<img src="/static/assets/duel.png" alt="remote-game-icon" style="width: 40px; height: 40px; margin-right: 10px;">Single Match
+		</button>
+		<button id="tournament-btn" class="gamemode-btn" title="Create or join a tournament" data-game-type="tournament">
+			<img src="/static/assets/leaderboard.png" alt="remote-game-icon" style="width: 40px; height: 40px; margin-right: 10px;">Tournament
+		</button>
+	</div>
+
+	<!-- local/online -->
+	<div class="btn-group-game mt-4">
+		<button id="local-btn" class="gamemode-btn" title="Play locally on the same keyboard" data-mode="local">
+			<img src="/static/assets/keyboard.png" alt="local-game-icon" style="width: 40px; height: 40px; margin-right: 10px;">Local
+		</button>
+		<button id="remote-btn" class="gamemode-btn" title="Play online with other users" data-mode="remote">
+			<img src="/static/assets/remote.png" alt="remote-game-icon" style="width: 40px; height: 40px; margin-right: 10px;">Online
+		</button>
+	</div>
+
+	<!-- start/back -->
+	<div class="action-buttons mt-4">
+		<button id="start-game-btn" class="btn btn-success custom-btn" title="Start Game" disabled><strong>Start Game</strong></button>
+	</div>
+	<div class="action-buttons mt-4">
+		<a data-route href="/dashboard" class="btn btn-secondary custom-btn" id="back-to-dashboard" title="Return to the dashboard">Back</a>
+	</div>
+</div>

@@ -1,0 +1,672 @@
+:root {
+	/* Background and Border Colors */
+	--background-color: rgba(0, 0, 0, 1);
+	--border-color: rgba(255, 255, 255, 1);
+	--font-color: rgba(255, 255, 255, 1);
+	--overlay-background-color: rgba(0, 0, 0, 0.5);
+	--close-button-color: rgba(205, 73, 73, 1);
+
+	/* Game Box Colors */
+	--game-box-bg-color: rgba(52, 23, 78, 0.7);
+	--game-box-border-color: rgba(86, 37, 129, 1);
+	--game-box-canvas-bg-color: rgba(23, 55, 83, 1);
+	--game-box-accent-color: rgb(28, 208, 240);
+
+	/* Player Card Colors */
+	--player-card-bg-color: rgba(35, 31, 32, 0.8);
+	--player-card-border-color: rgba(150, 150, 150, 1);
+	--player-card-font-color: rgba(255, 255, 255, 1);
+	--player-card-score-color: var(--game-box-accent-color);
+}
+
+.tournament-container,
+.single-match-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--background-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.game-close-btn {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	cursor: pointer;
+	transition: opacity 0.3s ease, scale 0.3s ease;
+	z-index: 1000;
+}
+
+.game-close-btn:hover {
+	scale: 1.1;
+}
+
+.register-player-popup,
+.add-players,
+.match-list {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	max-width: 500px;
+	padding: 20px;
+	border-radius: 8px;
+	z-index: 999;
+	background-color: var(--container-background-color);
+	box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.register-player-form {
+	box-shadow: none;
+}
+
+.register-player-form input[type="text"] {
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	border: s1px solid var(--border-color);
+}
+
+.register-player-form button {
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	border-radius: 4px;
+}
+
+.register-player-form button:hover {
+	background-color: var(--secondary-color);
+}
+
+.game-container {
+	position: relative;
+	width: 80%;
+	max-width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	aspect-ratio: 600 / 480;
+	margin-bottom: 50px;
+}
+
+.game-info {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	color: var(--text-color);
+}
+
+.player-info {
+	flex: 1;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.game-cards-container {
+	width: 60%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.player-card {
+	background-color: var(--light-gray);
+	padding: 15px;
+	border-radius: 8px;
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.player-card-avatar {
+	margin-bottom: 10px;
+}
+
+.player-card-avatar-img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--border-color);
+}
+
+.player-card-info {
+	text-align: center;
+}
+
+.player-card-username {
+	color: var(--text-color);
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
+
+.player-card-score {
+	color: var(--player-card-score-color);
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.game-canvas {
+	width: 100%;
+	max-width: 900px;
+	max-height: 600px;
+	aspect-ratio: 600 / 480;
+	border-radius: 10px;
+	box-shadow: 0 0 10px var(--shadow-color);
+	background-color: #243642;
+}
+
+/* invite player popup remote */
+.invite-player-popup {
+	background-color: var(--container-background-color);
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px var(--shadow-color);
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+	border: 1px solid var(--border-color);
+}
+
+.invite-player-popup h2 {
+	color: var(--text-color);
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.invite-player-popup .invite-player-input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background-color: var(--light-gray);
+	color: var(--text-color);
+	font-size: 1rem;
+}
+
+.invite-player-popup .invite-player-input::placeholder {
+	color: var(--secondary-color);
+}
+
+.invite-player-popup .invite-player-list {
+	max-height: 300px;
+	overflow-y: auto;
+	border-top: 1px solid var(--border-color);
+	padding-top: 10px;
+}
+
+.invite-player-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	background-color: var(--light-gray);
+	margin-bottom: 10px;
+}
+
+.invite-player-item img {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	margin-right: 15px;
+}
+
+.invite-player-item .user-info {
+	flex-grow: 1;
+	margin-right: 15px;
+}
+
+.invite-player-item .user-username {
+	color: var(--text-color);
+	font-size: 1.2rem;
+}
+
+.invite-player-popup .invite-play-btn {
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+	border-radius: var(--button-radius);
+	padding: 5px 15px;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.invite-player-popup .invite-play-btn:hover {
+	background-color: var(--success-color);
+}
+
+.invite-player-popup .invite-play-btn:disabled {
+	background-color: var(--border-color);
+	color: var(--secondary-color);
+	cursor: not-allowed;
+}
+
+.invite-player-popup .invite-play-btn:disabled:hover {
+	background-color: var(--border-color);
+	color: var(--secondary-color);
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+	.game-cards-container {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 10px;
+		padding: 0 10px;
+	}
+
+	.player-card {
+		width: 45%;
+		padding: 10px;
+		margin: 0;
+		box-shadow: none;
+	}
+
+	.player-card-avatar-img {
+		width: 40px;
+		height: 40px;
+	}
+
+	.player-card-username {
+		font-size: 0.9em;
+	}
+
+	.player-card-score {
+		font-size: 1.2em;
+	}
+}
+
+@media (max-height: 800px) {
+	.game-container {
+		width: auto;
+		height: 60%;
+		max-height: 100%;
+		aspect-ratio: 600 / 480;
+	}
+
+	.game-cards-container {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 10px;
+		padding: 0 10px;
+	}
+
+	.player-card {
+		width: 45%;
+		padding: 5px;
+		margin: 0;
+		box-shadow: none;
+		height: 80px;
+	}
+
+	.player-card-avatar-img {
+		width: 40px;
+		height: 40px;
+	}
+
+	.player-card-username {
+		font-size: 0.9em;
+	}
+
+	.player-card-score {
+		font-size: 1.2em;
+	}
+}
+
+/* jeu sur telephone  */
+.touch-controls {
+	position: fixed;
+	width: 20%;
+	height: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	bottom: 20px;
+	z-index: 1000;
+}
+
+.touch-controls-left {
+	left: 10px;
+	flex-direction: column;
+}
+
+.touch-controls-right {
+	right: 10px;
+	flex-direction: column;
+}
+
+.touch-btn {
+	width: 100%;
+	height: 48%;
+	margin: 1% 0;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: none;
+	outline: none;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	touch-action: none;
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+}
+
+.touch-btn:active {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.touch-btn::selection {
+	background: none;
+}
+
+/* GAME RESULT POPUP */
+.game-canceled-popup,
+.game-result-popup,
+.tournament-result {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--overlay-background-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1010;
+}
+
+.game-result-popup-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.game-result-popup-content {
+	background-color: var(--container-background-color);
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px var(--shadow-color);
+	max-width: 500px;
+	width: 100%;
+	z-index: 10;
+}
+
+.game-result-popup-content h2 {
+	color: var(--text-color);
+	font-size: 1.5rem;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+.game-result-summary {
+	display: flex;
+	justify-content: space-between;
+}
+
+.game-result-popup-player1,
+.game-result-popup-player2 {
+	display: flex;
+	align-items: center;
+}
+
+.game-result-popup-player1 {
+	flex-direction: row;
+}
+
+.game-result-popup-player2 {
+	flex-direction: row-reverse;
+}
+
+.game-result-popup-player1-avatar,
+.game-result-popup-player2-avatar {
+	display: block;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: var(--light-gray);
+	object-fit: cover;
+}
+
+.game-result-popup-player1-info,
+.game-result-popup-player2-info {
+	margin-left: 15px;
+}
+
+.game-result-popup-player2-info {
+	margin-left: 0;
+	margin-right: 15px;
+}
+
+.game-result-popup-player1-username,
+.game-result-popup-player2-username {
+	color: var(--text-color);
+	font-size: 1.2rem;
+}
+
+.game-result-popup-player1-score,
+.game-result-popup-player2-score {
+	color: var(--player-card-score-color);
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.game-result-popup-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.game-result-popup-actions button {
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+	border-radius: var(--button-radius);
+	padding: 5px 15px;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+/* GAME CANCELED POPUP */
+.game-canceled-popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--overlay-background-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1010;
+}
+
+.tournament__add-players {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	min-width: 400px;
+}
+
+.tournament__add-players form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.player-name {
+	width: 90%;
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	margin-bottom: 10px;
+	background-color: var(--light-gray);
+	color: var(--text-color);
+}
+
+.tournament__player-list {
+	list-style: none;
+	padding: 0;
+	width: 100%;
+}
+
+.tournament__player-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	background-color: var(--light-gray);
+	margin-bottom: 10px;
+}
+
+.tournament__player-list li span {
+	color: var(--text-color);
+}
+
+.tournament__player-list li button {
+	background-color: var(--alert-error);
+	color: #fff;
+	border: none;
+	border-radius: var(--button-radius);
+	padding: 5px 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.tournament__player-list li button:hover {
+	background-color: var(--secondary-color);
+}
+
+.tournament__start-game-btn {
+	background-color: var(--primary-color);
+	color: #fff;
+	border: none;
+	border-radius: var(--button-radius);
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-top: 20px;
+}
+
+.tournament__start-game-btn:hover {
+	background-color: var(--success-color);
+}
+
+.tournament__match-list {
+	background-color: var(--container-background-color);
+	margin-top: 30px;
+	padding: 20px;
+}
+
+.tournament__match-list h2 {
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 0;
+}
+
+.tournament__match {
+	position:relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	background-color: var(--light-gray);
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.tournament__match>div {
+	flex: 1;
+	display: absolute;
+}
+
+.tournament__match span {
+	color: var(--text-color);
+}
+
+.tournament-match-category {
+	font-size: 1.4rem;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.tournament-match-score {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tournament-match-score:first-child {
+	margin-right: 30px;
+}
+
+.tournament_start-next-round-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #fff;
+	border: none;
+	border-radius: var(--button-radius);
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, opacity 0.3s ease;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tournament_start-next-round-btn img {
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+.score-player-left,
+.score-player-right {
+	font-size: 1.2rem;
+	color: var(--primary-color);
+	font-weight: bold;
+}

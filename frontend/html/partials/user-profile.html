@@ -1,0 +1,73 @@
+<div id="user-profile" class="container text-center">
+
+	<div id="user-info" class="user-info d-flex justify-content-center">
+		<div class="text-center">
+			<img data-avatar id="user-avatar" src="/static/assets/user_default.png" alt="Avatar" class="user-avatar"
+				style="width:100px;height:100px;border-radius:50%;">
+			<h1 data-username id="user-username"></h1>
+		</div>
+	</div>
+
+	<div class="recent-activity my-2">
+		<h3>Stats</h3>
+		<div id="stats" class="d-flex justify-content-center">
+			<div class="text-center mx-2 match-item">
+				<div class="match-box">
+					<img src="/static/assets/win.png" alt="Win" class="match-avatar">
+					<p><strong>Wins</strong></p>
+					<p data-wins></p>
+				</div>
+			</div>
+			<div class="text-center mx-2 match-item">
+				<div class="match-box">
+					<img src="/static/assets/loss.png" alt="Loss" class="match-avatar">
+					<p><strong>Losses</strong></p>
+					<p data-losses></p>
+				</div>
+			</div>
+			<div class="text-center mx-2 match-item">
+				<div class="match-box">
+					<img src="/static/assets/ratio.png" alt="Ratio" class="match-avatar">
+					<p><strong>Ratio</strong></p>
+					<p data-ratio></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="recent-activity my-2">
+		<h3>Recent Matches</h3>
+		<div id="recent-matches" class="recent-matches d-flex justify-content-center">
+			<!-- jusqua 3 matchs affichés dynamiquement -->
+		</div>
+	</div>
+
+	<div class="user-action-buttons-container">
+		<div class="user-action-buttons">
+			<button data-chat-btn id="chat-friend" class="user-profile-action hidden" title="Chat with friend" style="background-color:#873591;">Chat with friend</button>
+			<button data-invite-play-btn id="invite-play" class="user-profile-action hidden" title="Invite to play" style="background-color:#007bff;">Invite to play</button>
+			<button data-add-friend-btn id="add-friend" class="user-profile-action hidden" title="Add friend" style="background-color:#28a745;">Add friend</button>
+			<button data-accept-friend-btn id="accept-friend" class="user-profile-action hidden" title="Accept friend request" style="background-color:#28a745;">Accept friend request</button>
+			<button data-decline-friend-btn id="decline-friend" class="user-profile-action hidden" title="Decline friend request" style="background-color:#ffc107;">Decline friend request</button>
+			<button data-cancel-friend-request-btn id="cancel-friend" class="user-profile-action hidden" title="Cancel friend request" style="background-color:#dc3545;">Cancel friend request</button>
+			<button data-remove-friend-btn id="remove-friend" class="user-profile-action hidden" title="Remove friend" style="background-color:#ffa007";>Remove friend</button>
+			<button data-block-user-btn id="block-user" class="user-profile-action hidden" title="Block user" style="background-color:#dc3545;">Block user</button>
+			<button data-unblock-user-btn id="unblock-user" class="user-profile-action hidden" title="Unblock user" style="background-color:#ffc107";>Unblock user</button>
+		</div>
+	</div>
+
+	<div class="custom-btns" style="margin-top: 40px;">
+		<a data-route href="/dashboard" class="btn btn-secondary custom-btn" id="back-to-dashboard" title="Go back to the dashboard">Back</a>
+	</div>
+
+	<template id="match-template">
+		<div class="text-center mx-2 match-item">
+			<div class="match-box">
+				<img data-result-img src="" alt="" class="match-avatar">
+				<p data-opponent></p>
+				<p data-timestamp class="timestamp"></p>
+				<p><span data-score1></span> - <span data-score2></span></p>
+			</div>
+		</div>
+	</template>
+</div>

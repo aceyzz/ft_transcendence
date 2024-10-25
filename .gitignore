@@ -1,0 +1,15 @@
+*.env
+*.env.vault
+*.key
+*.pem
+*.pub
+*.crt
+*.csr
+*.DS_Store
+*logs
+database/data
+backend/venv
+backend/uploaded_files
+__pycache__/
+*.pyc
+vault-secrets

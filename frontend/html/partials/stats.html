@@ -1,0 +1,30 @@
+<div id="stats-container" class="container text-center">
+	<h1 class="my-4">Game statistics</h1>
+	<div id="stats-recap" class="stats-header"></div>
+	<div id="match-list" class="stats-list">
+		<!-- Les statistiques des matchs seront insérées ici dynamiquement -->
+	</div>
+
+	<div class="action-buttons">
+		<a data-route href="/dashboard" class="btn btn-secondary custom-btn" id="back-to-dashboard" title="Go back to the dashboard">Back</a>
+	</div>
+
+	<template id="match-template">
+		<div class="match-stat">
+			<p><strong>Date:</strong> <span data-date></span> - <span data-type></span>
+			</p>
+			<p><strong>Opponent:</strong> <span data-opponent></span></p>
+			<p><strong>Score:</strong> <span data-score1></span> - <span data-score2></span> (<span data-result></span>)
+			</p>
+			<hr>
+		</div>
+	</template>
+
+	<template id="stat-header-item">
+		<div data-stat-header class="stat-header">
+			<img data-stat-header-logo src="" alt="">
+			<h4 data-stat-header-title></h4>
+			<div data-stat-header-content></div>
+		</div>
+	</template>
+</div>

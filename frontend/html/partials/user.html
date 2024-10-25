@@ -1,0 +1,69 @@
+<div id="user-profile" class="container">
+	<h1>Update profile</h1>
+
+	<table class="slider-group">
+		<tr>
+			<td><a data-route href="/user" id="list-friends-btn" class="sliders-btn btn active"
+					title="View Basic Infos">BASIC INFOS</a></td>
+			<td><a data-route href="/password" id="blocked-users-btn" class="sliders-btn btn"
+					title="Change Password">PASSWORD</a></td>
+		</tr>
+	</table>
+
+	<form id="avatar-form" class="form-list-group">
+		<div class="form-group">
+			<div id="user-avatar" class="d-flex align-items-center" style="justify-content: center;">
+				<img src="/static/assets/user_default.png" alt="User Avatar" id="avatar-preview"
+					style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; object-position: center;">
+			</div>
+			<input type="file" accept="image/*" name="avatar" id="avatar-input" class="d-none">
+			<div class="avatar-buttons mt-3 d-flex justify-content-between">
+				<button type="button" class="upload-btn" id="upload-avatar-btn" title="Upload New Avatar">Upload New
+					Avatar</button>
+				<button type="button" class="delete-btn" id="delete-avatar-btn" title="Delete Avatar">Delete
+					Avatar</button>
+			</div>
+		</div>
+	</form>
+
+	<form id="profile-form" class="form-list-group">
+		<div class="form-group">
+			<label for="first_name">First Name</label>
+			<div class="d-flex align-items-center">
+				<input type="text" id="first_name" name="first_name" class="form-control" autocomplete="given-name"
+					placeholder="Edit your first name">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="last_name">Last Name</label>
+			<div class="d-flex align-items-center">
+				<input type="text" id="last_name" name="last_name" class="form-control" autocomplete="family-name"
+					placeholder="Edit your last name">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="username">Username</label>
+			<div class="d-flex align-items-center">
+				<input type="text" id="username" name="username" class="form-control" autocomplete="username"
+					placeholder="Edit your username">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email</label>
+			<div class="d-flex align-items-center">
+				<input type="email" id="email" name="email" class="form-control" autocomplete="email"
+					placeholder="Edit your email">
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary mt-3" title="Save Changes">Save</button>
+	</form>
+
+	<div class="action-buttons">
+		<a data-route href="/dashboard" class="btn btn-secondary custom-btn" id="back-to-dashboard"
+			title="Back to Dashboard">Back</a>
+	</div>
+</div>

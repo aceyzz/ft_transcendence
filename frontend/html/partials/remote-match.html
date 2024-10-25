@@ -1,0 +1,101 @@
+<a data-route href="/game" id="back-to-menu" class="game-close-btn" title="Back to Menu">
+	<img src="/static/assets/close.png" alt="Close" style="height: 30px; width: 30px;">
+</a>
+
+<div id="single-match-container" class="single-match-container">
+
+	<div data-game-container id="game-container" class="game-container hidden">
+
+		<!-- Game cards -->
+		<div data-game-cards class="game-cards-container">
+			<div data-player-card class="player-card">
+				<div class="player-card-avatar">
+					<img data-avatar src="/static/assets/user_default.png" alt="Player Avatar"
+						class="player-card-avatar-img">
+				</div>
+				<div class="player-card-info">
+					<div data-username class="player-card-username">Username</div>
+					<div data-score class="player-card-score">0</div>
+				</div>
+			</div>
+			<div data-player-card class="player-card">
+				<div class="player-card-avatar">
+					<img data-avatar src="/static/assets/user_default.png" alt="Player Avatar"
+						class="player-card-avatar-img">
+				</div>
+				<div class="player-card-info">
+					<div data-username class="player-card-username">Username</div>
+					<div data-score class="player-card-score">0</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Game canvas -->
+		<canvas id="game-canvas" class="game-canvas"></canvas>
+
+		<!-- Game controls (mobile) -->
+		<div data-mobile-controls class="mobile-only mobile-controls">
+			<div class="touch-controls touch-controls-left">
+				<button data-up class="touch-btn move-up-left">Up</button>
+				<button data-down class="touch-btn move-down-left">Down</button>
+			</div>
+		</div>
+
+		<div class="game-result-popup hidden">
+			<div class="game-result-popup-overlay"></div>
+			<div class="game-result-popup-content">
+				<h2>Game finished</h2>
+				<div class="game-result-summary">
+					<div class="game-result-popup-player1">
+						<img class="game-result-popup-player1-avatar"></img>
+						<div class="game-result-popup-player1-info">
+							<div class="game-result-popup-player1-username"></div>
+							<div class="game-result-popup-player1-score"></div>
+						</div>
+					</div>
+					<div class="game-result-popup-player2">
+						<img class="game-result-popup-player2-avatar"></img>
+						<div class="game-result-popup-player2-info">
+							<div class="game-result-popup-player2-username"></div>
+							<div class="game-result-popup-player2-score"></div>
+						</div>
+					</div>
+				</div>
+				<div class="game-result-popup-actions">
+					<button id="game-result-action">OK</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="game-canceled-popup" class="game-canceled-popup hidden">
+			<div class="game-canceled-popup-content">
+				<h2>Game canceled</h2>
+				<p data-reason></p>
+				<div class="game-result-popup-actions">
+					<button id="game-canceled-action">OK</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="invite-player-popup" class="invite-player-popup hidden">
+		<h2>Invite a Player</h2>
+		<input type="text" id="invite-player-input" class="invite-player-input" placeholder="Search for a player...">
+		<div id="invite-player-list"></div>
+	</div>
+
+	<template id="invite-player-item-template">
+		<div class="invite-player-item">
+			<img data-avatar src="/static/assets/user_default.png" alt="Avatar" class="user-avatar">
+			<div class="user-info">
+				<span data-username class="user-username"></span>
+			</div>
+			<div>
+				<button data-invite-play-btn class="btn action-button invite-play-btn" title="Invite to play">
+					Invite to Play
+				</button>
+			</div>
+		</div>
+	</template>
+</div>

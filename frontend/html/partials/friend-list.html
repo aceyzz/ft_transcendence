@@ -1,0 +1,36 @@
+<div id="friend-list" class="container text-center">
+	<table class="slider-group">
+		<tr>
+			<td><a href="/add-friends" data-route id="add-friend-btn" class="sliders-btn btn"
+					title="Add new friends">INVITATIONS</a></td>
+			<td><a id="list-friends-btn" class="sliders-btn btn active" title="View your friend list">FRIEND LIST</a>
+			</td>
+			<td><a href="/blocked" data-route id="blocked-users-btn" class="sliders-btn btn"
+					title="View blocked users">BLOCKED</a></td>
+		</tr>
+	</table>
+
+	<div id="friends-container" class="users-list-container"></div>
+
+	<div class="action-buttons">
+		<a href="/dashboard" data-route class="btn btn-secondary custom-btn" id="back-to-dashboard"
+			title="Return to dashboard">Back</a>
+	</div>
+
+	<template id="friend-template">
+		<div data-friend class="friend-item" style="position: relative;">
+			<div data-profile-btn class="friend-avatar-container connection-indicator" title="View friend's profile">
+				<img data-friend-avatar src="/static/assets/user_default.png" class="friend-avatar-custom">
+			</div>
+			<div data-friend-username class="user-username"></div>
+			<div class="user-action">
+				<button data-block-btn class="btn" title="Block this user" id="block">
+					<img src="/static/assets/cancel-2.png" alt="Block" style="width:24px; height:24px;">
+				</button>
+				<button data-remove-btn class="btn" title="Remove this user from friends" id="remove">
+					<img src="/static/assets/remove.png" alt="Delete" style="width:24px; height:24px;">
+				</button>
+			</div>
+		</div>
+	</template>
+</div>

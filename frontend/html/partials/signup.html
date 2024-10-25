@@ -1,0 +1,22 @@
+<div id="signup" class="container text-center">
+	<h2>Signup</h2>
+	<form id="signup-form">
+		<input type="text" id="first_name" name="first_name" placeholder="First Name" autocomplete="given-name"
+			required>
+		<input type="text" id="last_name" name="last_name" placeholder="Last Name" autocomplete="family-name" required>
+		<input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required>
+		<input type="file" id="avatar" name="avatar" placeholder="Avatar (optional)">
+		<input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
+		<input type="password" id="password" name="password1" placeholder="Password" autocomplete="new-password"
+			required>
+		<input type="password" id="password2" name="password2" placeholder="Confirm Password"
+			autocomplete="new-password" required>
+		<button type="submit" class="btn btn-primary" title="Signup">Signup</button>
+	</form>
+
+	<div class="auth-footer">
+		<a href="/" data-route id="back-home" class="btn btn-secondary custom-btn" title="Back to Home">Back to Home</a>
+		<p>Already have an account?</p>
+		<a href="/login" data-route id="go-login" class="btn-link" title="Login">Login</a>
+	</div>
+</div>
