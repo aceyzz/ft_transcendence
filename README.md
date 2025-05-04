@@ -1,4 +1,3 @@
-<img src="_git_utils/logo.webp" alt="logo-so_long" style="width: 100%">
 <img src="_git_utils/banner.png" alt="logo-so_long" style="width: 100%">
 
 <br>
